@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Montser Hunter World Skills</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <meta name="description" content="ข้อมูล Skills Montser Hunter World">
+  <meta name="keywords" content="Montser Hunter World">
+  <meta name="author" content="Jirayu.k">
+
+  <link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../bower_components/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" type="text/css" href="../bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css">
+
+  <script src="../bower_components/jquery/dist/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../bower_components/jquery-highlight/jquery.highlight.js" type="text/javascript" charset="utf-8"></script>
+
+  {% block style %}{% endblock %}
+
+  <style>
+    .container-fluid .nav-tabs .nav-link.active{
+      background-color: #5a9bc9;
+      border-color: #5a9bc9 #5a9bc9 #165a8a;
+      color: #fff;
+    }
+    .container-fluid .nav-tabs{
+      border-bottom: 1px solid #165a8a;
+    }
+    .container-fluid tbody td, .container-fluid tbody th{
+      border-top: 2px solid #456581;
+    }
+  </style>
+
+</head>
+<body>
+
+
+
+
+
+<div class="container-fluid p-1">
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link {% if list %}active{% endif %}" href="/skills">Skill List</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link {% if set %}active{% endif %}" href="/skills_armor">Skill Set Armor</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link {% if food %}active{% endif %}" href="/skills_food">Skill Food</a>
+  </li>
+
+</ul>
+
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+
+    <div class="card p-1" style="width: 100%">
+      <span class="card-img-top" style="background-color:#ccc" ></span>
+      <div class="card-body p-1">
+
+          {% include 'search.twig' %}
+          {% block content_tab %}{% endblock %}
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+</div>
+
+{% block script %}{% endblock %}
+
+</body>
+</html>

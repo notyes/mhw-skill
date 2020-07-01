@@ -1,0 +1,82 @@
+{% extends "layout.twig" %}
+
+
+{% block style %}
+<style>
+  
+.highlight{
+  background-color: yellow;
+}
+.dataTables_filter {
+  display: none;
+}
+
+</style>
+
+{% endblock %}
+
+
+
+{% block content_tab %}
+
+<table id="myTable" class="table table-striped" style="width:100%" >
+  <thead>
+    <tr>
+      <th><h2>Skill Name</h2></th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    {% for skill in dataList %}
+    <tr>
+      <td>
+        <b style="color:#195e90" >{{skill.name}}</b>
+        <hr>
+        <div style="color:#5f5f5f" >
+          {{skill.detail|raw|nl2br}}
+        </div>
+      </td>
+      
+    </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+
+{% endblock %}
+
+
+{% block script %}
+
+<script>
+  
+
+$(document).ready(function() {
+
+    var table = $('#myTable').DataTable({
+      // "paging": false,
+      "pageLength": 500,
+      "bLengthChange" : false,
+      "bPaginate": false,
+      "bInfo" : false,
+      // "searching" : false,
+    });
+
+    $('#myInput').on( 'keyup', function () {
+        table.search( this.value ).draw();
+    } );
+
+ 
+     $('div.dataTables_filter input').addClass('col col-md-12');
+
+    table.on( 'draw', function () {
+        var body = $( table.table().body() );
+ 
+        body.unhighlight();
+        body.highlight( table.search() );  
+    } );
+
+} );
+
+</script>
+{% endblock %}
